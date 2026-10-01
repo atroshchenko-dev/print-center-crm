@@ -1,0 +1,23 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    # Pre-existing level-5 findings, frozen so CI catches NEW ones.
+    # Shrink this file over time; do not add to it.
+    - phpstan-baseline.neon
+
+parameters:
+    level: 5
+
+    paths:
+        - app/
+
+    excludePaths:
+        # Optional: Laravel 11+ has no Console/Kernel.php
+        - app/Console/Kernel.php (?)
+
+    # Ignore mixed return types from Eloquent dynamic methods
+    ignoreErrors:
+        - '#Call to an undefined method Illuminate\\Database\\Eloquent\\Builder#'
+        - '#Call to an undefined method Illuminate\\Database\\Query\\Builder#'
+
+    # Increase memory for larger codebases
+    reportUnmatchedIgnoredErrors: false

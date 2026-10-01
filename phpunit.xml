@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         failOnDeprecation="false"
+         failOnNotice="false"
+         failOnWarning="false"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+    <php>
+        <!-- Pinned. The CLI default of 128M sits exactly at the suite's peak:
+             the last green CI run on main reports "Memory: 129.00 MB", and on
+             2026-08-12 the full local run died inside zipstream's 16 MiB fread
+             chunk (File.php:334) on the test that happened to write an XLSX
+             after a few hundred app boots - a one-order workbook; the archive
+             itself goes to a temp file, so the trigger moves with test order,
+             not workbook size. One line here covers every runner instead of a
+             flag each of them must remember, and it also pins CI, where
+             setup-php sets memory_limit to -1 and a memory regression could
+             never fail. Guarded by Tests\Unit\MemoryLimitPinTest. -->
+        <ini name="memory_limit" value="512M"/>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="BROADCAST_CONNECTION" value="null"/>
+        <env name="CACHE_STORE" value="array"/>
+        <env name="DB_CONNECTION" value="pgsql"/>
+        <env name="DB_HOST" value="postgres"/>
+        <env name="DB_PORT" value="5432"/>
+        <env name="DB_DATABASE" value="crm_print_test"/>
+        <env name="DB_USERNAME" value="crm"/>
+        <env name="DB_PASSWORD" value="secret"/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="PULSE_ENABLED" value="false"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="NIGHTWATCH_ENABLED" value="false"/>
+    </php>
+</phpunit>

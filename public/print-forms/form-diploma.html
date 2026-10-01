@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Заявка — Дипломи / Додатки / Академдовідки</title>
+<style>
+  @page { size: A4; margin: 12mm 15mm }
+  * { margin: 0; padding: 0; box-sizing: border-box }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #1a1a1a; background: #fff }
+  .form { max-width: 210mm; margin: 0 auto; padding: 10mm }
+  .header { text-align: center; border-bottom: 3px double #333; padding-bottom: 10px; margin-bottom: 14px }
+  .header-org { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #555; margin-bottom: 2px }
+  .header-dept { font-size: 11px; color: #777; margin-bottom: 6px }
+  .header-title { font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px }
+  .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-bottom: 16px }
+  .field { display: flex; align-items: flex-end; gap: 6px }
+  .field-label { font-weight: 600; font-size: 12px; white-space: nowrap; color: #444 }
+  .field-line { flex: 1; border-bottom: 1.5px solid #999; min-height: 22px }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 12px }
+  th { background: #f0f0f0; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 8px 10px; border: 1.5px solid #aaa; color: #333 }
+  td { border: 1.5px solid #bbb; padding: 10px 12px; vertical-align: middle }
+  .section-label { text-align: left; font-weight: 600; font-size: 13px }
+  .section-spec { font-size: 11px; color: #666; font-weight: 400; display: block; margin-top: 2px }
+  .section-extra { font-size: 11px; color: #888; margin-top: 4px }
+  .qty-col { width: 100px; text-align: center }
+  .note-col { width: 160px }
+  .write-area { border-bottom: 1px dotted #bbb; min-height: 20px; margin-top: 4px }
+  .signatures { display: flex; justify-content: space-between; margin-top: 28px }
+  .sig { width: 42% }
+  .sig-line { border-bottom: 1.5px solid #999; height: 28px; margin-bottom: 4px }
+  .sig-label { font-size: 10px; color: #888; text-align: center }
+  .group-header { font-size: 12px; font-weight: 700; color: #444; text-transform: uppercase; letter-spacing: 1px; padding: 6px 10px; background: #e8e8e8; border: 1.5px solid #aaa }
+  .legend { font-size: 10px; color: #888; padding: 6px 10px; background: #f8f8f8; border-radius: 4px; border: 1px solid #eee; margin-bottom: 8px }
+  .legend b { color: #555 }
+  @media print { body { background: #fff } .form { padding: 0 } }
+</style>
+</head>
+<body>
+<div class="form">
+  <div class="header">
+    <div class="header-org">Університет</div>
+    <div class="header-dept">Редакційно-видавничий відділ</div>
+    <div class="header-title">Заявка на друк дипломів / додатків</div>
+  </div>
+  <div class="meta">
+    <div class="field"><span class="field-label">Дата:</span><div class="field-line"></div></div>
+    <div class="field"><span class="field-label">Підрозділ:</span><div class="field-line"></div></div>
+    <div class="field"><span class="field-label">Підписант:</span><div class="field-line"></div></div>
+    <div class="field"><span class="field-label">Тел./Email:</span><div class="field-line"></div></div>
+  </div>
+
+  <table>
+    <thead><tr><th>Позиція</th><th class="qty-col">Кількість</th><th class="note-col">Примітка</th></tr></thead>
+    <tbody>
+      <!-- Originals group -->
+      <tr><td colspan="3" class="group-header">Оригінали (кольоровий друк, папір 160 г/м²)</td></tr>
+      <tr>
+        <td class="section-label">Дипломи <span class="section-spec">А4, 160 г/м², кольор 4+0 — 1 аркуш на диплом</span></td>
+        <td class="qty-col"></td><td></td>
+      </tr>
+      <tr>
+        <td class="section-label">Додатки до дипломів
+          <span class="section-spec">А4, 160 г/м², кольоровий друк</span>
+          <div class="section-extra">Кількість аркушів на 1 додаток: ________&nbsp;&nbsp;&nbsp;Режим: □ 4+0 &nbsp; □ 4+4 &nbsp; □ 0+0</div>
+        </td>
+        <td class="qty-col"></td><td></td>
+      </tr>
+      <tr>
+        <td class="section-label">Академдовідки <span class="section-spec">А3, 160 г/м², кольор 4+4 — 1 аркуш на довідку</span></td>
+        <td class="qty-col"></td><td></td>
+      </tr>
+
+      <!-- Copies group -->
+      <tr><td colspan="3" class="group-header">Копії (чорно-білий друк, папір 80 г/м²)</td></tr>
+      <tr>
+        <td class="section-label">Копії дипломів <span class="section-spec">А4, 80 г/м², ч/б 1+0 — 1 аркуш на копію</span></td>
+        <td class="qty-col"></td><td></td>
+      </tr>
+      <tr>
+        <td class="section-label">Копії додатків
+          <span class="section-spec">А4, 80 г/м², чорно-білий друк</span>
+          <div class="section-extra">Кількість аркушів на 1 копію: ________&nbsp;&nbsp;&nbsp;Режим: □ 1+0 &nbsp; □ 1+1</div>
+        </td>
+        <td class="qty-col"></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <b>Оригінали</b> — повнокольоровий друк на щільному папері 160 г/м².
+    <b>Копії</b> — чорно-білий друк на стандартному папері 80 г/м².
+    Кількість = скільки комплектів (студентів).
+  </div>
+
+  <div class="signatures">
+    <div class="sig"><div class="sig-line"></div><div class="sig-label">Підпис замовника</div></div>
+    <div class="sig"><div class="sig-line"></div><div class="sig-label">Прийняв (оператор)</div></div>
+  </div>
+</div>
+</body>
+</html>
